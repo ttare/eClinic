@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+  <head>
+    <title>eClinic</title>
+    <!-- start: META -->
+    <!--[if IE]><meta http-equiv='X-UA-Compatible' content="IE=edge,IE=9,IE=8,chrome=1" /><![endif]-->
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta content="" name="description">
+    <meta content="" name="author">
+    <!-- end: META -->
+    <!-- start: GOOGLE FONTS -->
+    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css">
+    <!-- end: GOOGLE FONTS -->
+
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="vendor/components-font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="vendor/animate.css/animate.css">
+    <link rel="stylesheet" href="vendor/themify-icons/themify-icons.css">
+    <link rel="stylesheet" href="vendor/switchery/switchery.css">
+    <link rel="stylesheet" href="vendor/sweetalert/dist/sweetalert.css">
+    <link rel="stylesheet" href="vendor/angular-chart.js/dist/angular-chart.css">
+    <link rel="stylesheet" href="assets/css/styles.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/plugins.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/theme-1.css" type="text/css">
+
+
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css styles/main.css -->
+    <link rel="stylesheet" href="assets/css/styles.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/plugins.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/theme-1.css" type="text/css">
+    <!-- endbuild -->
+
+  </head>
+  <body ng-app="app" >
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <div id="loaderDiv">
+      <img src="assets/img/ajax-loader.gif" class="ajax-loader"/>
+    </div>
+
+    <div ui-view=""></div>
+
+
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="vendor/jquery/dist/jquery.min.js"></script>
+    <script src="vendor/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="vendor/modernizr/modernizr.js"></script>
+    <script src="vendor/angular/angular.js"></script>
+    <script src="vendor/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="vendor/angular-cookies/angular-cookies.js"></script>
+    <script src="vendor/angular-translate/angular-translate.js"></script>
+    <script src="vendor/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
+    <script src="vendor/ngmap/build/scripts/ng-map.js"></script>
+    <script src="vendor/Chart.js/Chart.js"></script>
+    <script src="vendor/angular-chart.js/angular-chart.js"></script>
+
+    <script src="vendor/switchery/dist/switchery.js"></script>
+
+    <script src="vendor/sweetalert/dist/sweetalert-dev.js"></script>
+    <script src="vendor/ngSweetAlert/SweetAlert.js"></script>
+
+
+    <script src="vendor/moment/min/moment.min.js"></script>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/ui-notifications.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <script src="//maps.google.com/maps/api/js"></script>
+
+    <!-- build:js scripts/scripts.js -->
+    <script src="ng-app.js"></script>
+    <script src="authorization.service.js"></script>
+    <script src="common/image.service.js"></script>
+    <script src="constants.js"></script>
+
+    <script src="app/public/public.js"></script>
+    <script src="app/public/public.service.js"></script>
+    <script src="app/public/login/public.login.controller.js"></script>
+
+
+
+    <script src="app/doctor/dashboard.js"></script>
+    <script src="app/doctor/dashboard.controller.js"></script>
+    <script src="app/doctor/dashboard.service.js"></script>
+    <script src="app/doctor/main/dashboard.main.controller.js"></script>
+    <script src="app/doctor/details/dashboard.details.controller.js"></script>
+    <script src="app/doctor/add/dashboard.add.controller.js"></script>
+
+
+    <script src="app/admin/admin.js"></script>
+    <script src="app/admin/admin.controller.js"></script>
+    <script src="app/admin/admin.service.js"></script>
+    <script src="app/admin/main/admin.main.controller.js"></script>
+
+    <script src="app/patient/patient.js"></script>
+    <script src="app/patient/patient.controller.js"></script>
+    <script src="app/patient/main/patient.main.controller.js"></script>
+
+
+
+    <!-- endbuild -->
+</body>
+</html>

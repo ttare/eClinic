@@ -1,0 +1,141 @@
+<section id="page-title">
+  <div class="row">
+    <div class="col-sm-8">
+      <h1 class="mainTitle text-uppercase">{{'labels.dashboard' | translate}}</h1>
+      <span class="mainDescription">{{'labels.overview_and_stats' | translate}}</span>
+    </div>
+  </div>
+</section>
+
+<!-- start: YOUR CONTENT HERE -->
+
+<!-- start: SECTION map-->
+<div class="container-fluid container-fullw">
+  <div class="row">
+    <div class="col-md-12">
+      <map center="18.32, 43.84303" zoom="3">
+        <marker id="3" ng-repeat="pos in positions" position="{{pos.latitude}}, {{pos.longitude}}"></marker>
+
+      </map>
+    </div>
+  </div>
+</div>
+<!-- end: SECTION map -->
+
+
+<!-- start: SECTION 1 -->
+<div class="container-fluid container-fullw bg-white">
+
+  <div class="row">
+    <div class="col-md-12">
+      <h5 class="over-title margin-bottom-15"><span class="text-bold">Patients</span></h5>
+      <a class="btn btn-primary email-profile-message ng-binding" ui-sref="dashboard.add">
+        Add patient <i class="fa fa-plus"></i>
+      </a>
+      <table class="table table-striped table-hover" id="sample-table-2">
+        <thead>
+        <tr>
+          <th class="center">Photo</th>
+          <th>Full name</th>
+          <th>Birth Date</th>
+          <th class="hidden-xs">Address</th>
+          <th class="hidden-xs">Phone Number</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="patient in patients">
+          <td class="center">
+            <img ng-src="{{'/assets/img/' + (patient.image || 'no_img.png')}}"   class="img-rounded" alt="image" style="height: 50px; width: 50px">
+          </td>
+          <td> {{patient.first_name + ' ' + patient.last_name }}</td>
+          <td class="hidden-xs">
+            {{patient.birth_date || 'empty field'}}
+          </td>
+          <td class="hidden-xs"> {{patient.address || 'empty field'}}</td>
+          <td class="hidden-xs">{{patient.phone_number || 'empty field'}}</td>
+          <td class="center">
+            <div class="visible-md visible-lg hidden-sm hidden-xs">
+              <a ui-sref="dashboard.device({name: device.Id})"
+                 class="btn btn-transparent btn-s"
+                 data-placement="top"
+                 data-toggle="tooltip"
+                 title="{{'labels.view_profile' | translate}}">
+                <i class="fa fa-eye"></i>
+              </a>
+              <a class="btn btn-transparent btn-s tooltips profile-emailed"
+                 data-placement="top"
+                 data-toggle="tooltip"
+                 title="{{'labels.email_profile' | translate}}">
+                <i class="fa fa-envelope"></i>
+              </a>
+              <a ui-sref="dashboard.locations({name: device.Id})"
+                 class="btn btn-transparent btn-s tooltips"
+                 data-placement="top"
+                 data-toggle="tooltip"
+                 title="{{'labels.location_history' | translate}}">
+                <i class="fa fa-map-marker fa fa-white"></i>
+              </a>
+              <a ui-sref="dashboard.recordings({name: device.Id})"
+                 class="btn btn-transparent btn-s tooltips"
+                 data-placement="top"
+                 data-toggle="tooltip"
+                 title="{{'labels.emergency_recordings' | translate}}">
+                <i class="fa fa-exclamation-triangle"></i>
+              </a>
+            </div>
+            <div class="visible-xs visible-sm hidden-md hidden-lg">
+              <div class="btn-group" dropdown="">
+                <a class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                  <i class="fa fa-cog"></i>&nbsp;
+                  <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu pull-right dropdown-light" role="menu">
+                  <li>
+                    <a ui-sref="dashboard.device({name: device.Id})">
+                      {{'labels.view_profile' | translate}}
+                    </a>
+                  </li>
+                  <li>
+                    <a class="profile-emailed">
+                      {{'labels.email_profile' | translate}}
+                    </a>
+                  </li>
+                  <li>
+                    <a ui-sref="dashboard.locations({name: device.Id})" >
+                      {{'labels.location_history' | translate}}
+                    </a>
+                  </li>
+                  <li>
+                    <a ui-sref="dashboard.recordings({name: device.Id})">
+                      {{'labels.emergency_recordings' | translate}}
+                    </a>
+                  </li>
+                  <li>
+                    <p style="text-align:center;padding-top:10px;">{{'labels.battery_life' | translate}}</p>
+                    <div class="progress">
+                      <div
+                        class="progress-bar"
+                        role="progressbar"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                        ng-class="{'progress-bar-danger': device.BatteryLevel <= 30, 'progress-bar-warning': device.BatteryLevel <= 60, 'progress-bar-success': device.BatteryLevel <= 100}"
+                        ng-style="{'width': device.BatteryLevel + '%'}"
+                      >
+                        {{device.BatteryLevel + '%'}}
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<!-- end: SECTION 1 -->
+
+
+<!-- end: YOUR CONTENT HERE -->

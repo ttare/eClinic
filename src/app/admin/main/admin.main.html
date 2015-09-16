@@ -1,0 +1,62 @@
+<section id="page-title">
+  <div class="row">
+    <div class="col-sm-8">
+      <h1 class="mainTitle text-uppercase">{{'labels.dashboard' | translate}}</h1>
+      <span class="mainDescription">{{'labels.overview_and_stats' | translate}}</span>
+    </div>
+  </div>
+</section>
+
+<!-- start: YOUR CONTENT HERE -->
+
+<!-- start: SECTION map-->
+<div class="container-fluid container-fullw">
+  <div class="row">
+    <div class="col-md-12">
+      na linku ispod naci slike <br>
+      http://themify.me/themify-icons
+      <div class="row">
+        <div class="col-md-2" style="border:1px solid #ccc; margin: 10px">
+          <div style="float: left; width: 40%; padding: 15px 5px">
+            <i class="ti-user" style="font-size: 50px"></i>
+          </div>
+          <div style="float: left; width: 50%; padding: 15px 5px">
+            <h4>Patients</h4>
+            <h3>{{userStatistics.patients}}</h3>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+
+        <div class="col-md-2" style="border:1px solid #ccc; margin: 10px">
+          <div style="float: left; width: 40%; padding: 15px 5px">
+            <i class="ti-user" style="font-size: 50px"></i>
+          </div>
+          <div style="float: left; width: 50%; padding: 15px 5px">
+            <h4>Doctors</h4>
+            <h3>{{userStatistics.doctors}}</h3>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+
+
+        <div class="col-md-2" style="border:1px solid #ccc; margin: 10px">
+          <div style="float: left; width: 40%; padding: 15px 5px">
+            <i class="ti-user" style="font-size: 50px"></i>
+          </div>
+          <div style="float: left; width: 50%; padding: 15px 5px">
+            <h4>Monitorings</h4>
+            <h3>{{monitoringStatistics.monitorings}}</h3>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end: SECTION map -->
+
+
+
+
+<!-- end: YOUR CONTENT HERE -->

@@ -1,0 +1,103 @@
+<section id="page-title">
+  <div class="row">
+    <div class="col-sm-8">
+      <h1 class="mainTitle text-uppercase">{{'labels.dashboard' | translate}}</h1>
+      <span class="mainDescription">{{'labels.overview_and_stats' | translate}}</span>
+    </div>
+  </div>
+</section>
+
+<!-- start: YOUR CONTENT HERE -->
+
+<!-- start: SECTION map-->
+<div class="container-fluid container-fullw">
+  <div class="row">
+    <div class="col-md-12">
+      <map center="{{position.latitude}}, {{position.longitude}}" zoom="8">
+        <marker id="3" position="{{position.latitude}}, {{position.longitude}}"></marker>
+      </map>
+    </div>
+  </div>
+</div>
+<!-- end: SECTION map -->
+
+
+<!-- start: SECTION 1 -->
+<div class="container-fluid container-fullw bg-white">
+  <div class="row">
+    <div class="col-sm-12">
+
+      <fieldset>
+        <legend>
+          {{'labels.child_info' | translate}}
+        </legend>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">
+                {{'labels.first_name' | translate}}
+              </label>
+              <input disabled="" type="text" value="{{patientDetails.first_name}}" class="form-control" id="firstname" name="firstname">
+            </div>
+            <div class="form-group">
+              <label class="control-label">
+                {{'labels.last_name' | translate}}
+              </label>
+              <input disabled="" type="text" value="{{patientDetails.last_name}}" class="form-control" id="lastname" name="lastname">
+            </div>
+            <div class="form-group">
+              <label class="control-label">
+                {{'labels.date_of_birth' | translate}}
+              </label>
+              <input disabled="" type="text" value="{{patientDetails.birth_date }}" class="form-control" id="dob" name="dob">
+            </div>
+            <div class="form-group">
+              <label class="control-label">
+                {{'labels.date_of_birth' | translate}}
+              </label>
+              <input disabled="" type="text" value="{{patientDetails.birth_date }}" class="form-control" id="dob" name="dob">
+            </div>
+            <div class="form-group">
+              <label class="control-label">
+                {{'labels.date_of_birth' | translate}}
+              </label>
+              <input disabled="" type="text" value="{{patientDetails.birth_date }}" class="form-control" id="dob" name="dob">
+            </div>
+            <div class="row" style="padding-top: 36px">
+              <canvas id="temperature" class="chart chart-line" chart-data="temperatureData" chart-colours="temperatureColor"
+                      chart-labels="temperatureLabels" chart-legend="true" chart-series="temperatureSeries"
+                      chart-click="onClick" >
+              </canvas>
+            </div>
+
+
+
+          </div>
+
+          <div class="col-md-6">
+            <canvas id="heart" class="chart chart-line" chart-data="heartData"
+                    chart-labels="heartLabels" chart-legend="true" chart-series="heartSeries" chart-colours="heartColor"
+                    chart-click="onClick" >
+            </canvas>
+
+            <canvas id="presure" class="chart chart-line" chart-data="presureData" chart-colours="presureColor"
+                    chart-labels="presureLabels" chart-legend="true" chart-series="presureSeries"
+                    chart-click="onClick" >
+            </canvas>
+
+
+
+          </div>
+
+        </div>
+      </fieldset>
+
+    </div>
+  </div>
+
+
+</div>
+<!-- end: SECTION 1 -->
+
+
+<!-- end: YOUR CONTENT HERE -->

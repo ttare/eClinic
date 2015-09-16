@@ -1,0 +1,114 @@
+<div id="app" class="app-navbar-fixed app-sidebar-fixed">
+    <!-- sidebar -->
+    <div class="sidebar app-aside" id="sidebar">
+        <div class="sidebar-container perfect-scrollbar ps-container">
+            <nav>
+                <!-- start: MAIN NAVIGATION MENU -->
+                <div class="navbar-title">
+                    <span>{{'labels.main_navigation' | translate}}</span>
+                </div>
+                <ul class="main-navigation-menu">
+                    <li>
+                        <a ui-sref="patient.main">
+                            <div class="item-content">
+                                <div class="item-media">
+                                    <i class="ti-home"></i>
+                                </div>
+                                <div class="item-inner">
+                                    <span class="title"> {{profile.first_name + ' ' + profile.last_name}} </span>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+
+                </ul>
+
+                <div class="wrapper">
+
+                    <a class="button-o logout-message" ng-click="logout()" style="
+							display: block;
+    						margin-right: auto;
+    						margin-left: auto;">
+                        <i class="ti-power-off"></i>
+                        <span>{{'buttons.logout' | translate}}</span>
+                    </a>
+
+                </div>
+                <!-- end: DOCUMENTATION BUTTON -->
+            </nav>
+            <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 3px;">
+                <div class="ps-scrollbar-x" style="left: 0px; width: 0px;"></div>
+            </div>
+            <div class="ps-scrollbar-y-rail" style="top: 0px; right: 3px;">
+                <div class="ps-scrollbar-y" style="top: 0px; height: 0px;"></div>
+            </div>
+        </div>
+    </div>
+    <!-- / sidebar -->
+    <div class="app-content">
+        <!-- start: TOP NAVBAR -->
+        <header class="navbar navbar-default navbar-static-top">
+            <!-- start: NAVBAR HEADER -->
+            <div class="navbar-header">
+                <a href="#" class="sidebar-mobile-toggler pull-left hidden-md hidden-lg"
+                   data-toggle-class="app-slide-off" data-toggle-target="#app" data-toggle-click-outside="#sidebar">
+                    <i class="ti-align-justify"></i>
+                </a>
+                <a class="navbar-brand" href="#">
+                    <img src="assets/img/logo.png" alt="FiLIP-CP" style="width: 170px">
+                </a>
+
+                <a class="pull-right menu-toggler visible-xs-block logout-message" id="menu-toggler">
+                    <span class="sr-only">Toggle navigation</span>
+                    <i class="ti-power-off"></i>
+                </a>
+
+            </div>
+            <!-- end: NAVBAR HEADER -->
+            <!-- start: NAVBAR COLLAPSE -->
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-right" style="height: auto;">
+                    <!-- start: USER OPTIONS DROPDOWN -->
+                    <li class="dropdown current-user">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown">
+                            <img ng-src="{{'/assets/img/' + (profile.image || 'no_img.png')}}" alt="{{profile.first_name}}">
+                            <span class="username">{{profile.first_name + ' ' + profile.last_name}} <i
+                                    class="ti-angle-down"></i></span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-dark">
+                            <li>
+                                <a class="logout-message" ng-click="logout()">
+                                    {{'buttons.logout' | translate}}
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- end: USER OPTIONS DROPDOWN -->
+                </ul>
+            </div>
+
+            <!-- end: NAVBAR COLLAPSE -->
+        </header>
+        <!-- end: TOP NAVBAR -->
+        <div class="main-content">
+            <div class="wrap-content container" id="container">
+                <ui-view></ui-view>
+            </div>
+        </div>
+    </div>
+    <!-- start: FOOTER -->
+    <footer>
+        <div class="footer-inner">
+            <div class="pull-left">
+                © <span class="current-year">2015</span> <span
+                    class="text-bold text-uppercase">FiLIP Technologies</span>.<span>{{'labels.all_rights_reserved' | translate}}</span>
+            </div>
+            <div class="pull-right">
+                <span class="go-top"><i class="ti-angle-up"></i></span>
+            </div>
+        </div>
+    </footer>
+    <!-- end: FOOTER -->
+
+
+</div>
