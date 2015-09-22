@@ -1,6 +1,6 @@
 'use strict';
 
 angular.module('app')
-  .constant('apiUrl', 'http://146.255.137.7:9000');
+  .constant('apiUrl', 'http://192.168.1.48:9000');
 
 

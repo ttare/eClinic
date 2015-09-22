@@ -18,10 +18,14 @@
   <div class="container-fluid container-fullw bg-white">
     <div class="row">
       <div class="col-sm-12">
+        <pre ng-repeat="notif in notifications" style="color:black" ng-show="notif.text" ng-class="{'alert-danger' : notif.priority == 'HIGH', 'alert-warning' : notif.priority == 'LOW' }">
+          <strong>{{notif.text}}</strong>
+        </pre>
 
         <fieldset>
           <legend>
-            {{'labels.child_info' | translate}}
+            Patient details
+            <button class="btn btn-default pull-right" style="margin-left: 10px; padding: 0 5px; height: 25px" ng-click="finishMonitoring()">Finish monitoring</button>
           </legend>
           <div class="row">
             <div class="col-md-6">
@@ -61,9 +65,39 @@
                         chart-click="onClick" >
                 </canvas>
               </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label class="control-label">
+                  Description
+                </label>
+                <input disabled="" type="text" value="{{monitoring.description}}" class="form-control" id="lastname" name="lastname">
+              </div>
 
-
-
+              <div class="form-group">
+                <label class="control-label">
+                  Date
+                </label>
+                <input disabled="" type="text" value="{{monitoring.dateTime}}" class="form-control" id="datetmie" name="datetmie">
+              </div>
+              <div class="form-group">
+                <label class="control-label">
+                  Location
+                </label>
+                <input disabled="" type="text" value="{{monitoring.location }}" class="form-control" id="dob" name="dob">
+              </div>
+              <div class="form-group">
+                <label class="control-label">
+                 Finished
+                </label>
+                <input disabled="" type="text" value="{{monitoring.finished ? 'Yes' : 'No' }}" class="form-control" id="dob" name="dob">
+              </div>
+              <div class="form-group">
+                <label class="control-label">
+                  Additionaly
+                </label>
+                <input disabled="" type="text" value="{{monitoring.additionally}}" class="form-control" id="dob" name="dob">
+              </div>
             </div>
 
             <div class="col-md-6">

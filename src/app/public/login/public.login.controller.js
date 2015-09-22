@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('public')
-  .controller('public.login.ctrl', function ($rootScope, $scope, $state, publicServices, authorizationService) {
+  .controller('public.login.ctrl', function ($rootScope, $scope, $state, publicServices, authorizationService, SweetAlert) {
       var typeMapper = {
         'PATIENT': 'patient.main',
         'DOCTOR': 'dashboard.main',
@@ -27,7 +27,16 @@ angular.module('public')
         $rootScope.loggedUser = result.data;
         $state.go(typeMapper[result.data.role]);
       }, function (error) {
+        SweetAlert.swal({
+              title: 'Login error',
+              text: 'Wrong credentials !!!',
+              type: "error",
+              closeOnConfirm: true,
+              confirmButtonColor: '#F27474'
+            },
+            function(){
 
+            });
       });
     };
 

@@ -1,9 +1,20 @@
 'use strict';
 
 angular.module('dashboard')
-    .controller('dashboard.details.ctrl', function ($rootScope, $scope, $interval, $stateParams, patient, dashboardServices) {
+    .controller('dashboard.details.ctrl', function ($rootScope, $scope, $interval, $stateParams, patient, monitoring, dashboardServices) {
         $scope.patientDetails = patient.data;
+        $scope.monitoring = monitoring.data;
         var id = $stateParams.name;
+
+        $scope.finishMonitoring = function () {
+            dashboardServices.finishMonitoring(id, function (result) {
+                $scope.monitoring.finished = 1;
+                $interval.cancel(getHeartFunction);
+                $interval.cancel(getPresureFunction);
+            }, function (error) {
+
+            });
+        };
 
         $scope.presureLabels = [];
         $scope.presureSeries = ['Diastolic', 'Sistolic'];
@@ -32,6 +43,12 @@ angular.module('dashboard')
                     text: temperature.anomaly_notification
                 };
             }
+            if (presure.anomaly_priority) {
+                $scope.notifications[1] = {
+                    priority: presure.anomaly_priority,
+                    text: presure.anomaly_notification
+                };
+            }
             /*            anomaly_notification: "Patient Tarik Kaldžija has temperature over 37."
              anomaly_priority: "LOW"
              diastolic: -1
@@ -44,18 +61,18 @@ angular.module('dashboard')
              systolic: 130
              vital_function_id: 2*/
             if ($scope.presureData[0].length == 15) {
-                $scope.presureData[0].splice(7, 14);
-                $scope.presureData[1].splice(7, 14);
-                $scope.presureLabels.splice(7, 14);
-                $scope.temperatureData[0].splice(7, 14);
-                $scope.temperatureLabels.splice(7, 14);
+                $scope.presureData[0].splice(0, 7);
+                $scope.presureData[1].splice(0, 7);
+                $scope.presureLabels.splice(0, 7);
+                $scope.temperatureData[0].splice(0, 7);
+                $scope.temperatureLabels.splice(0, 7);
             }
             $scope.presureData[0].push(presure.diastolic);
             $scope.presureData[1].push(presure.systolic);
-            $scope.presureLabels.push(moment().format('HH:MM'));
+            $scope.presureLabels.push(moment().format('HH:mm'));
 
             $scope.temperatureData[0].push(temperature.value);
-            $scope.temperatureLabels.push(moment().format('HH:MM'));
+            $scope.temperatureLabels.push(moment().format('HH:mm'));
         }, function (error) {
 
         });
@@ -71,21 +88,19 @@ angular.module('dashboard')
 
         dashboardServices.getPatientHeart(id, function (result) {
             var heart = result.data;
-            /*            anomaly_notification: null
-             anomaly_priority: null
-             diastolic: -1
-             monitoring_id: 3
-             systolic: -1
-             value: 1.2
-             vital_function: "Heart rate"
-             vital_function_id: 1*/
+            if (heart.anomaly_priority) {
+                $scope.notifications[2] = {
+                    priority: heart.anomaly_priority,
+                    text: heart.anomaly_notification
+                };
+            }
 
             if ($scope.heartData[0].length == 15) {
-                $scope.heartData[0].splice(7, 14);
-                $scope.heartLabels.splice(7, 14);
+                $scope.heartData[0].splice(0, 7);
+                $scope.heartLabels.splice(0, 7);
             }
             $scope.heartData[0].push(heart.value);
-            $scope.heartLabels.push(moment().format('HH:MM:ss'));
+            $scope.heartLabels.push(moment().format('HH:mm:ss'));
 
 
         }, function (error) {
@@ -101,21 +116,20 @@ angular.module('dashboard')
         var getHeartFunction = $interval(function () {
             dashboardServices.getPatientHeart(id, function (result) {
                 var heart = result.data;
-                /*            anomaly_notification: null
-                 anomaly_priority: null
-                 diastolic: -1
-                 monitoring_id: 3
-                 systolic: -1
-                 value: 1.2
-                 vital_function: "Heart rate"
-                 vital_function_id: 1*/
+
+                if (heart.anomaly_priority) {
+                    $scope.notifications[2] = {
+                        priority: heart.anomaly_priority,
+                        text: heart.anomaly_notification
+                    };
+                }
 
                 if ($scope.heartData[0].length == 15) {
-                    $scope.heartData[0].splice(7, 14);
-                    $scope.heartLabels.splice(7, 14);
+                    $scope.heartData[0].splice(0, 7);
+                    $scope.heartLabels.splice(0, 7);
                 }
                 $scope.heartData[0].push(heart.value);
-                $scope.heartLabels.push(moment().format('HH:MM:ss'));
+                $scope.heartLabels.push(moment().format('HH:mm:ss'));
 
 
             }, function (error) {
@@ -129,31 +143,38 @@ angular.module('dashboard')
                 //0
                 var temperature = result.data[0];
                 var presure = result.data[1];
-                /*            anomaly_notification: "Patient Tarik Kaldžija has temperature over 37."
-                 anomaly_priority: "LOW"
-                 diastolic: -1
-                 monitoring_id: 3
-                 systolic: -1
-                 value: 37.2
-                 vital_function: "Temperature"
-                 vital_function_id: 2*/
+
+
+                if (temperature.anomaly_priority) {
+                    $scope.notifications[0] = {
+                        priority: temperature.anomaly_priority,
+                        text: temperature.anomaly_notification
+                    };
+                }
+                if (presure.anomaly_priority) {
+                    $scope.notifications[1] = {
+                        priority: presure.anomaly_priority,
+                        text: presure.anomaly_notification
+                    };
+                }
+
                 if ($scope.presureData[0].length == 15) {
-                    $scope.presureData[0].splice(7, 14);
-                    $scope.presureData[1].splice(7, 14);
-                    $scope.presureLabels.splice(7, 14);
-                    $scope.temperatureData[0].splice(7, 14);
-                    $scope.temperatureLabels.splice(7, 14);
+                    $scope.presureData[0].splice(0, 7);
+                    $scope.presureData[1].splice(0, 7);
+                    $scope.presureLabels.splice(0, 7);
+                    $scope.temperatureData[0].splice(0, 7);
+                    $scope.temperatureLabels.splice(0, 7);
                 }
                 $scope.presureData[0].push(presure.diastolic);
                 $scope.presureData[1].push(presure.systolic);
-                $scope.presureLabels.push(moment().format('HH:MM'));
+                $scope.presureLabels.push(moment().format('HH:mm'));
 
                 $scope.temperatureData[0].push(temperature.value);
-                $scope.temperatureLabels.push(moment().format('HH:MM'));
+                $scope.temperatureLabels.push(moment().format('HH:mm'));
             }, function (error) {
 
             });
-        }, 60000);
+        }, 5000);
 
         $scope.$on('$destroy', function () {
             $interval.cancel(getHeartFunction);

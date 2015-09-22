@@ -10,7 +10,7 @@ angular.module('dashboard')
         return $http.get(apiUrl + '/doctor/patients').then(successCallback, errorCallback);
       },
       getPatientsMap: function (successCallback, errorCallback) {
-        return $http.get(apiUrl + '/patients/map').then(successCallback, errorCallback);
+        return $http.get(apiUrl + '/patients/map', { headers: {loading: false}}).then(successCallback, errorCallback);
       },
       getPatientDetails: function (id, successCallback, errorCallback) {
         return $http.get(apiUrl + '/patient?id='+id).then(successCallback, errorCallback);
@@ -26,6 +26,17 @@ angular.module('dashboard')
       },
       getPatientMap: function (successCallback, errorCallback) {
         return $http.get(apiUrl + '/patient/map').then(successCallback, errorCallback);
+      },
+      getMonitoringDetails: function (id, successCallback, errorCallback) {
+        return $http.get(apiUrl + '/getmonitoring?id=' + id).then(successCallback, errorCallback);
+      },
+      finishMonitoring: function (id, successCallback, errorCallback) {
+        return $http.get(apiUrl + '/monitoring/finished/' + id).then(successCallback, errorCallback);
+      },
+      addMonitoring: function (monitoring, successCallback, errorCallback) {
+        $http.post(apiUrl + '/monitorings/add', monitoring).then(successCallback, errorCallback);
       }
+
+
     }
   });

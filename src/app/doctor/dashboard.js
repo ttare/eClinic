@@ -31,12 +31,26 @@ angular.module('dashboard', [])
       .state('dashboard.main', {
         url:'/dashboard',
         templateUrl: 'app/doctor/main/dashboard.main.html',
-        controller: 'dashboard.main.ctrl'
+        controller: 'dashboard.main.ctrl',
+        resolve: {
+          map: function (dashboardServices) {
+            return dashboardServices.getPatientsMap(function (result) {
+              return result.data;
+            }, function (error) {
+
+            });
+          }
+        }
       })
       .state('dashboard.add', {
         url:'/add',
         templateUrl: 'app/doctor/add/dashboard.add.html',
         controller: 'dashboard.add.ctrl'
+      })
+      .state('dashboard.monitoring', {
+        url:'/addMonitoring/:name',
+        templateUrl: 'app/doctor/monitoring/dashboard.monitoring.html',
+        controller: 'dashboard.monitoring.ctrl'
       })
       .state('dashboard.details', {
         url:'/details/:name',
@@ -46,6 +60,14 @@ angular.module('dashboard', [])
           patient: function ($stateParams, dashboardServices) {
             var name = $stateParams.name;
             return dashboardServices.getPatientDetails(name, function (data) {
+              return data;
+            }, function (error) {
+
+            });
+          },
+          monitoring: function ($stateParams, dashboardServices) {
+            var name = $stateParams.name;
+            return dashboardServices.getMonitoringDetails(name, function (data) {
               return data;
             }, function (error) {
 

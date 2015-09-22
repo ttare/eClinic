@@ -13,9 +13,8 @@
 <div class="container-fluid container-fullw">
   <div class="row">
     <div class="col-md-12">
-      <map center="18.32, 43.84303" zoom="3">
+      <map center="43.84303, 18.32" zoom="8">
         <marker id="3" ng-repeat="pos in positions" position="{{pos.latitude}}, {{pos.longitude}}"></marker>
-
       </map>
     </div>
   </div>
@@ -50,38 +49,25 @@
           </td>
           <td> {{patient.first_name + ' ' + patient.last_name }}</td>
           <td class="hidden-xs">
-            {{patient.birth_date || 'empty field'}}
+            {{getDate(patient.birth_date,'DD MMMM, YYYY')}}
           </td>
           <td class="hidden-xs"> {{patient.address || 'empty field'}}</td>
           <td class="hidden-xs">{{patient.phone_number || 'empty field'}}</td>
           <td class="center">
             <div class="visible-md visible-lg hidden-sm hidden-xs">
-              <a ui-sref="dashboard.device({name: device.Id})"
+              <a ui-sref="dashboard.details({name: patient.id})"
                  class="btn btn-transparent btn-s"
                  data-placement="top"
                  data-toggle="tooltip"
                  title="{{'labels.view_profile' | translate}}">
                 <i class="fa fa-eye"></i>
               </a>
-              <a class="btn btn-transparent btn-s tooltips profile-emailed"
-                 data-placement="top"
-                 data-toggle="tooltip"
-                 title="{{'labels.email_profile' | translate}}">
-                <i class="fa fa-envelope"></i>
-              </a>
-              <a ui-sref="dashboard.locations({name: device.Id})"
+              <a ui-sref="dashboard.monitoring({name: patient.id})"
                  class="btn btn-transparent btn-s tooltips"
                  data-placement="top"
                  data-toggle="tooltip"
                  title="{{'labels.location_history' | translate}}">
                 <i class="fa fa-map-marker fa fa-white"></i>
-              </a>
-              <a ui-sref="dashboard.recordings({name: device.Id})"
-                 class="btn btn-transparent btn-s tooltips"
-                 data-placement="top"
-                 data-toggle="tooltip"
-                 title="{{'labels.emergency_recordings' | translate}}">
-                <i class="fa fa-exclamation-triangle"></i>
               </a>
             </div>
             <div class="visible-xs visible-sm hidden-md hidden-lg">

@@ -1,0 +1,118 @@
+
+
+<div class="wrap-content container" id="container">
+  <!-- start: PAGE TITLE -->
+  <section id="page-title">
+    <div class="row">
+      <div class="col-sm-8">
+        <h1 class="mainTitle">Add patient </h1>
+        <span class="mainDescription">description</span>
+      </div>
+    </div>
+  </section>
+  <!-- end: PAGE TITLE -->
+  <!-- start: YOUR CONTENT HERE -->
+
+
+  <!-- start: SECTION 1 -->
+  <div class="container-fluid container-fullw bg-white">
+    <div class="row">
+      <div class="col-sm-12">
+
+        <fieldset>
+          <legend>
+            Monitoring details
+          </legend>
+          <form name="myForm" novalidate>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="control-label">
+                    Location
+                  </label>
+                  <input  type="text" ng-minlength="3" required ng-model="monitoring.location" class="form-control" id="firstname" name="firstname">
+                  <div role="alert">
+                    <span class="error" style="color: red" ng-show="myForm.firstname.$error.required">
+                     Required!
+                    </span>
+                    <span class="error" style="color: red" ng-show="myForm.firstname.$error.minlength">
+                     Too short!
+                    </span>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label">
+                    Description
+                  </label>
+                  <input type="text" ng-minlength="3" required ng-model="monitoring.description" class="form-control" id="lastname" name="lastname">
+                  <div role="alert">
+                    <span class="error" style="color: red" ng-show="myForm.lastname.$error.required">
+                     Required!
+                    </span>
+                    <span class="error" style="color: red" ng-show="myForm.lastname.$error.minlength">
+                     Too short!
+                    </span>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label">
+                    Date
+                  </label>
+                  <input type="text" required ng-model="monitoring.dateTime" class="form-control" id="dob" name="dob">
+                  <div role="alert">
+                    <span class="error" style="color: red" ng-show="myForm.dob.$error.required">
+                     Required!
+                    </span>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label">
+                    Duration
+                  </label>
+                  <input class="form-control" ng-model="monitoring.duration" type="text" name="haircolor" id="f">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="control-label">
+                    Additionally
+                  </label>
+                  <textarea class="form-control" ng-model="monitoring.additionally" rows="10"  type="text" name="haircolor" id="haircolor"></textarea>
+                </div>
+              </div>
+
+
+            </div>
+          </form>
+        </fieldset>
+        <div class="row">
+          <div class="col-md-6 ng-binding">
+          </div>
+          <div class="col-md-6">
+            <button class="btn btn-primary pull-right email-profile-message ng-binding" ng-click="addPatient()">
+              Add monitoring <i class="fa fa-arrow-circle-right"></i>
+            </button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+  <!-- end: SECTION 1 -->
+
+  anomaly_notification: null
+  anomaly_priority: null
+  diastolic: -1
+  monitoring_id: 3
+  systolic: -1
+  value: 1.2
+  vital_function: "Heart rate"
+  vital_function_id: 1
+
+  <!-- end: YOUR CONTENT HERE -->
+
+
+
+</div>
