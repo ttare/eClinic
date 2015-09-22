@@ -74,6 +74,11 @@ angular.module('dashboard', [])
             });
           }
         }
-      });
+      })
+      .state('dashboard.support', {
+        url:'/support',
+        templateUrl: 'app/doctor/support/dashboard.support.html'
+      })
+    ;
 
   });
